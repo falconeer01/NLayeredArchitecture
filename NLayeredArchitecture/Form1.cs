@@ -22,19 +22,20 @@ namespace NLayeredArchitecture
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            List<EntityPersonnel> PerList = LogicPersonnel.LLPersonnelList();
-            DataPanel.DataSource = PerList;
+            FList.ListFunc(DataPanel);
         }
 
-        private void ListBtn_Click(object sender, EventArgs e)
+        private void AddBtn_Click(object sender, EventArgs e)
         {
+            EntityPersonnel p = new EntityPersonnel();
+
             string name = NameBox.Text;
             string surname = SurnameBox.Text;
             string city = CityBox.Text;
             string duty = DutyBox.Text;
             string salary = SalaryBox.Text;
 
-            int addedPersonnelID = DALPersonnel.AddPersonnel(name, surname, city, duty, salary);
+            int addedPersonnelID = LogicPersonnel.LLAddPersonnel(p, name, surname, city, duty, salary);
 
             if (addedPersonnelID != -1)
             {
@@ -46,27 +47,58 @@ namespace NLayeredArchitecture
             }
 
             // Yeniden listelemek için:
-            List<EntityPersonnel> PerList = LogicPersonnel.LLPersonnelList();
-            DataPanel.DataSource = PerList;
+            FList.ListFunc(DataPanel);
         }
 
         private void DelBtn_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(IDBox.Text);
-
-            DALPersonnel.DelPersonnel(id);
-
-            if (id >= 0)
+            EntityPersonnel p = new EntityPersonnel
             {
-                MessageBox.Show($"Personel deleted with ID: {id}");
+                ID = Convert.ToInt32(IDBox.Text)
+            };
+
+            LogicPersonnel.LLDelPersonnel(p);
+
+            if (p.ID >= 0)
+            {
+                MessageBox.Show($"Personel deleted with ID: {p.ID}");
             }
             else
             {
                 MessageBox.Show("Error occurred while deleting personnel.");
             }
 
-            List<EntityPersonnel> PerList = LogicPersonnel.LLPersonnelList();
-            DataPanel.DataSource = PerList;
+            FList.ListFunc(DataPanel);
+        }
+
+        private void UpdBtn_Click(object sender, EventArgs e)
+        {
+            EntityPersonnel p = new EntityPersonnel();
+
+            int id = Convert.ToInt32(IDBox.Text);
+            string name = NameBox.Text;
+            string surname = SurnameBox.Text;
+            string city = CityBox.Text;
+            string duty = DutyBox.Text;
+            string salary = SalaryBox.Text;
+
+            int updatedPersonnelID = LogicPersonnel.LLUpdatePersonnel(p, id, name, surname, city, duty, salary);
+
+            if (updatedPersonnelID != -1)
+            {
+                MessageBox.Show($"Personnel updated with ID: {updatedPersonnelID}");
+            }
+            else
+            {
+                MessageBox.Show("Error occurred while updating personnel.");
+            }
+
+            FList.ListFunc(DataPanel);
+        }
+
+        private void RefreshBtn_Click(object sender, EventArgs e)
+        {
+            FList.ListFunc(DataPanel);
         }
     }
 }

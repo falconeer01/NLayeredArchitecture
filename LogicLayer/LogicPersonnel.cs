@@ -15,14 +15,8 @@ namespace LogicLayer
             return DALPersonnel.PersonnelList();
         }
 
-        public static int LLAddPersonnel(EntityPersonnel p)
+        public static int LLAddPersonnel(EntityPersonnel p, string name, string surname, string city, string duty, string salary)
         {
-            string name = p.Name;
-            string surname = p.Surname;
-            string city = p.City;
-            string duty = p.Duty;
-            string salary = p.Salary.ToString();
-
             if (p.Name != "")
             {
                 return DALPersonnel.AddPersonnel(name, surname, city, duty, salary);
@@ -35,9 +29,19 @@ namespace LogicLayer
 
         public static int LLDelPersonnel(EntityPersonnel p)
         {
-            int id = p.ID;
+            return DALPersonnel.DelPersonnel(p.ID);
+        }
 
-            return DALPersonnel.DelPersonnel(id);
+        public static int LLUpdatePersonnel(EntityPersonnel p, int id, string name, string surname, string city, string duty, string salary)
+        {
+            if (p.Name != "")
+            {
+                return DALPersonnel.UpdatePersonnel(id, name, surname, city, duty, salary);
+            }
+            else
+            {
+                return -1;
+            }
         }
     }
 }

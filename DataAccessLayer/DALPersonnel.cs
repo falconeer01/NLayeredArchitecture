@@ -52,13 +52,12 @@ namespace DataAccessLayer
                 DB.Personnel.Add(newPersonnel);
                 DB.SaveChanges();
 
-                return newPersonnel.ID; // Eklendikten sonraki ID'yi dönebilirsiniz.
+                return newPersonnel.ID;
             }
             catch (Exception ex)
             {
-                // Hata durumunda burada işlem yapabilirsiniz.
-                Console.WriteLine("Hata: " + ex.Message);
-                return -1; // Hata durumunu belirtmek için -1 veya başka bir değer dönebilirsiniz.
+                Console.WriteLine("Error: " + ex.Message);
+                return -1;
             }
         }
 
@@ -67,7 +66,9 @@ namespace DataAccessLayer
             try
             {
                 EFConnection DB = new EFConnection();
+
                 var personnel = DB.Personnel.Find(id);
+
                 DB.Personnel.Remove(personnel);
                 DB.SaveChanges();
 
@@ -75,7 +76,32 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Hata: " + ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+                return -1;
+            }
+        }
+
+        public static int UpdatePersonnel(int id, string name, string surname, string city, string duty, string salary)
+        {
+            try
+            {
+                EFConnection DB = new EFConnection();
+
+                var personnel = DB.Personnel.Find(id);
+
+                personnel.Name = name;
+                personnel.Surname = surname;
+                personnel.City = city;
+                personnel.Duty = duty;
+                personnel.Salary = short.Parse(salary);
+
+                DB.SaveChanges();
+
+                return personnel.ID;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
                 return -1;
             }
         }

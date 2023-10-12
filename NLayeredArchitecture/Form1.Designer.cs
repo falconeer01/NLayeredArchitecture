@@ -41,8 +41,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.SalaryBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.ListBtn = new System.Windows.Forms.Button();
+            this.AddBtn = new System.Windows.Forms.Button();
             this.DelBtn = new System.Windows.Forms.Button();
+            this.UpdBtn = new System.Windows.Forms.Button();
+            this.RefreshBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataPanel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,19 +153,19 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Salary:";
             // 
-            // ListBtn
+            // AddBtn
             // 
-            this.ListBtn.Location = new System.Drawing.Point(166, 328);
-            this.ListBtn.Name = "ListBtn";
-            this.ListBtn.Size = new System.Drawing.Size(133, 32);
-            this.ListBtn.TabIndex = 13;
-            this.ListBtn.Text = "List";
-            this.ListBtn.UseVisualStyleBackColor = true;
-            this.ListBtn.Click += new System.EventHandler(this.ListBtn_Click);
+            this.AddBtn.Location = new System.Drawing.Point(54, 328);
+            this.AddBtn.Name = "AddBtn";
+            this.AddBtn.Size = new System.Drawing.Size(133, 32);
+            this.AddBtn.TabIndex = 13;
+            this.AddBtn.Text = "Add";
+            this.AddBtn.UseVisualStyleBackColor = true;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // DelBtn
             // 
-            this.DelBtn.Location = new System.Drawing.Point(405, 328);
+            this.DelBtn.Location = new System.Drawing.Point(193, 328);
             this.DelBtn.Name = "DelBtn";
             this.DelBtn.Size = new System.Drawing.Size(133, 32);
             this.DelBtn.TabIndex = 14;
@@ -171,13 +173,35 @@
             this.DelBtn.UseVisualStyleBackColor = true;
             this.DelBtn.Click += new System.EventHandler(this.DelBtn_Click);
             // 
+            // UpdBtn
+            // 
+            this.UpdBtn.Location = new System.Drawing.Point(332, 328);
+            this.UpdBtn.Name = "UpdBtn";
+            this.UpdBtn.Size = new System.Drawing.Size(133, 32);
+            this.UpdBtn.TabIndex = 15;
+            this.UpdBtn.Text = "Update";
+            this.UpdBtn.UseVisualStyleBackColor = true;
+            this.UpdBtn.Click += new System.EventHandler(this.UpdBtn_Click);
+            // 
+            // RefreshBtn
+            // 
+            this.RefreshBtn.Location = new System.Drawing.Point(471, 328);
+            this.RefreshBtn.Name = "RefreshBtn";
+            this.RefreshBtn.Size = new System.Drawing.Size(133, 32);
+            this.RefreshBtn.TabIndex = 16;
+            this.RefreshBtn.Text = "Refresh";
+            this.RefreshBtn.UseVisualStyleBackColor = true;
+            this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 372);
+            this.Controls.Add(this.RefreshBtn);
+            this.Controls.Add(this.UpdBtn);
             this.Controls.Add(this.DelBtn);
-            this.Controls.Add(this.ListBtn);
+            this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.SalaryBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.DutyBox);
@@ -218,8 +242,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox SalaryBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button ListBtn;
+        private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Button DelBtn;
+        private System.Windows.Forms.Button UpdBtn;
+        private System.Windows.Forms.Button RefreshBtn;
     }
 }
 
